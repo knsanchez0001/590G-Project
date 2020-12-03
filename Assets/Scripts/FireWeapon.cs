@@ -89,15 +89,15 @@ public class FireWeapon : MonoBehaviour
         shotsRemaining--;
         triggerSet = false;
 
-        float x = Random.Range(-projectileSpread, projectileSpread);
         float y = Random.Range(-projectileSpread, projectileSpread);
+        float z = Random.Range(-projectileSpread, projectileSpread);
 
-        Vector3 direction = fpsCam.transform.forward + new Vector3(x, y, 0);
+        Vector3 direction = fpsCam.transform.forward + new Vector3(0, y, z);
 
         if (
             Physics
                 .Raycast(fpsCam.transform.position,
-                fpsCam.transform.forward,
+                direction,
                 out rayHit,
                 range,
                 whatIsEnemy)
