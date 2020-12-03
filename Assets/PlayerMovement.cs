@@ -32,13 +32,13 @@ public class PlayerMovement : MonoBehaviour
                 graviationalVelocity.y += Mathf.Sqrt(playerJumpHeight * -2f * gravitationalForce);
             }
 
-            if(Input.GetKey(KeyCode.LeftShift) || transform.localScale.y == 1f && Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out RaycastHit hit, 1.5f)){
+            if(Input.GetKey(KeyCode.LeftShift) || controller.height == 2 && Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out RaycastHit hit, 2f)){
                 playerVelocity = movementInput * playerSpeed * 0.5f;
-                transform.localScale = new Vector3(1f, 1f, 1f);
+                controller.height = 2;
             }
             else{
                 playerVelocity = movementInput * playerSpeed;
-                transform.localScale = new Vector3(1f, 1.5f, 1f);
+                controller.height = 3;
             }
             
         }
