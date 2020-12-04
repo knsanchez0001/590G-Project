@@ -76,6 +76,9 @@ public class Weapon : MonoBehaviour
 
     private void Shoot()
     {
+        muzzleFlash.Play();
+        sound.Play();
+
         triggerSet = false;
 
         Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -105,8 +108,7 @@ public class Weapon : MonoBehaviour
         clone.GetComponent<Projectile>().damage = damage;
         clone.GetComponent<Projectile>().parentWeapon = transform.gameObject;
 
-        muzzleFlash.Play();
-        sound.Play();
+        
 
         shotsRemaining--;
         Debug.Log (shotsRemaining);
