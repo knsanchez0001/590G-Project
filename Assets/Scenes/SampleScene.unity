@@ -2305,12 +2305,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5725701975702774852, guid: 9ab53797ee96dc84694d73584b64b191, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 8988404100504643877, guid: d253ea0e817313a4596eeaa17215791b, type: 3}
+    - target: {fileID: 5725701975702774852, guid: 9ab53797ee96dc84694d73584b64b191, type: 3}
       propertyPath: rateOfFire
-      value: 400
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 5725701975702774852, guid: 9ab53797ee96dc84694d73584b64b191, type: 3}
       propertyPath: muzzleVelocity
-      value: 10
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725701975702774852, guid: 9ab53797ee96dc84694d73584b64b191, type: 3}
+      propertyPath: projectileSpread
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5725701975702774853, guid: 9ab53797ee96dc84694d73584b64b191, type: 3}
       propertyPath: m_RootOrder

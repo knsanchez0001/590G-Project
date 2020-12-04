@@ -30,6 +30,8 @@ public class Weapon : MonoBehaviour
 
     public ParticleSystem muzzleFlash;
     public AudioSource sound;
+    public AudioClip shootSound;
+    public AudioClip reloadSound;
 
     Vector3 direction;
 
@@ -91,15 +93,15 @@ public class Weapon : MonoBehaviour
 
         Vector3 targetDisplacement = targetPoint - muzzle.position;
 
+        float x = Random.Range(-projectileSpread, projectileSpread);
         float y = Random.Range(-projectileSpread, projectileSpread);
-        float z = Random.Range(-projectileSpread, projectileSpread);
 
-        direction = targetDisplacement + new Vector3(0, y, z);
+        direction = targetDisplacement.normalized;
 
         GameObject clone =
             Instantiate(projectile, muzzle.position, Quaternion.identity);
-        clone.transform.forward = direction.normalized;
-        clone.GetComponent<Rigidbody>().AddForce(direction * muzzleVelocity, ForceMode.Impulse);
+        clone.transform.forward = direction;
+        clone.GetComponent<Rigidbody>().AddForce(direction * muzzleVelocity + new Vector3(x, y, 0), ForceMode.Impulse);
         clone.GetComponent<Projectile>().damage = damage;
         clone.GetComponent<Projectile>().parentWeapon = transform.gameObject;
 
