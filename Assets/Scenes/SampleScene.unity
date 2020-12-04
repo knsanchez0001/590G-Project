@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 752137751}
   - component: {fileID: 752137756}
   - component: {fileID: 752137755}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -654,7 +654,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 3.8
-  m_Radius: 0.8
+  m_Radius: 0.6
   m_SlopeLimit: 45
   m_StepOffset: 0.5
   m_SkinWidth: 0.08
@@ -766,7 +766,7 @@ GameObject:
   - component: {fileID: 863033670}
   - component: {fileID: 863033671}
   - component: {fileID: 863033672}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: M1911
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -781,7 +781,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863033669}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.197, y: -0.103, z: 0.444}
+  m_LocalPosition: {x: 0.197, y: -0.103, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1046225733}
@@ -803,24 +803,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  magazineCapacity: 200
-  rateOfFire: 1500
-  projectileSpread: 0.05
+  magazineCapacity: 8
+  rateOfFire: 2000
+  projectileSpread: 0.01
   range: 100
-  reloadTime: 4
-  isFullAuto: 1
+  reloadTime: 1.5
+  fullAuto: 0
   shotsRemaining: 0
   shooting: 0
   reloading: 0
   triggerSet: 0
   fpsCam: {fileID: 1375276564}
   muzzle: {fileID: 914561808}
-  whatIsEnemy:
+  layerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 256
   projectileImpactGraphic: {fileID: 100006, guid: 9e95c7b2183a4f345aaf86846f8f1918, type: 3}
   muzzleFlash: {fileID: 914561810}
   sound: {fileID: 863033672}
+  bullet: {fileID: 8988404100504643877, guid: d253ea0e817313a4596eeaa17215791b, type: 3}
+  muzzleVelocity: 10
 --- !u!82 &863033672
 AudioSource:
   m_ObjectHideFlags: 0
@@ -928,8 +930,8 @@ GameObject:
   - component: {fileID: 914561808}
   - component: {fileID: 914561810}
   - component: {fileID: 914561809}
-  m_Layer: 0
-  m_Name: Muzzle Flash
+  m_Layer: 8
+  m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -943,7 +945,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914561807}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.0253, z: -0.1548}
+  m_LocalPosition: {x: 0, y: 0.0253, z: -0.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1882953906}
@@ -1024,7 +1026,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914561807}
   serializedVersion: 6
-  lengthInSec: 0.1
+  lengthInSec: 0.16
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -1035,7 +1037,7 @@ ParticleSystem:
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-  useRigidbodyForVelocity: 1
+  useRigidbodyForVelocity: 0
   startDelay:
     serializedVersion: 2
     minMaxState: 0
@@ -1152,7 +1154,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1204,12 +1206,12 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 2
-      minColor: {r: 0, g: 0.97955513, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.80275667, b: 0.15471691, a: 1}
+      minMaxState: 4
+      minColor: {r: 0.86347455, g: 0.98807406, b: 0.990566, a: 1}
+      maxColor: {r: 1, g: 0.7282184, b: 0.15294117, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 0.9811321, g: 0.67610806, b: 0.2906372, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -1238,7 +1240,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 1, g: 0.8182339, b: 0.14528298, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -1533,7 +1535,7 @@ ParticleSystem:
     startRotation:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.0008726646
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1584,7 +1586,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 1
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -1642,9 +1644,9 @@ ParticleSystem:
         m_RotationOrder: 4
   ShapeModule:
     serializedVersion: 6
-    enabled: 1
+    enabled: 0
     type: 4
-    angle: 25
+    angle: 20
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -1788,7 +1790,7 @@ ParticleSystem:
           m_RotationOrder: 4
     arc:
       value: 360
-      mode: 0
+      mode: 3
       spread: 0
       speed:
         serializedVersion: 2
@@ -1952,66 +1954,8 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    m_BurstCount: 1
-    m_Bursts:
-    - serializedVersion: 2
-      time: 0
-      countCurve:
-        serializedVersion: 2
-        minMaxState: 0
-        scalar: 30
-        minScalar: 30
-        maxCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        minCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-      cycleCount: 1
-      repeatInterval: 0.01
-      probability: 1
+    m_BurstCount: 0
+    m_Bursts: []
   SizeModule:
     enabled: 0
     curve:
@@ -4861,7 +4805,7 @@ ParticleSystem:
       emitProbability: 1
   LightsModule:
     enabled: 1
-    ratio: 0
+    ratio: 1
     light: {fileID: 1882953907}
     randomDistribution: 1
     color: 1
@@ -4870,7 +4814,7 @@ ParticleSystem:
     rangeCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5799,7 +5743,7 @@ GameObject:
   - component: {fileID: 932252982}
   - component: {fileID: 932252984}
   - component: {fileID: 932252983}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5975,7 +5919,7 @@ GameObject:
   - component: {fileID: 990818229}
   - component: {fileID: 990818231}
   - component: {fileID: 990818230}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: M1911
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6058,7 +6002,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1046225733}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CINEMA_4D_Editor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6182,7 +6126,7 @@ GameObject:
   - component: {fileID: 1136748844}
   - component: {fileID: 1136748846}
   - component: {fileID: 1136748845}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6548,7 +6492,7 @@ GameObject:
   - component: {fileID: 1369692829}
   - component: {fileID: 1369692831}
   - component: {fileID: 1369692830}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Magazin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6630,7 +6574,7 @@ GameObject:
   - component: {fileID: 1375276564}
   - component: {fileID: 1375276563}
   - component: {fileID: 1375276562}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6645,7 +6589,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375276560}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -0.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 863033670}
@@ -7013,7 +6957,7 @@ GameObject:
   - component: {fileID: 1634532536}
   - component: {fileID: 1634532538}
   - component: {fileID: 1634532537}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7257,7 +7201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1882953906}
   - component: {fileID: 1882953907}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Muzzle Flash Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

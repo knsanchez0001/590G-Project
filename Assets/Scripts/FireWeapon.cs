@@ -16,7 +16,7 @@ public class FireWeapon : MonoBehaviour
 
     public float reloadTime;
 
-    public bool isFullAuto;
+    public bool fullAuto;
 
     int shotsFired;
 
@@ -34,29 +34,36 @@ public class FireWeapon : MonoBehaviour
 
     public RaycastHit rayHit;
 
-    public LayerMask whatIsEnemy;
+    public LayerMask layerMask;
 
     public GameObject projectileImpactGraphic;
+
     public ParticleSystem muzzleFlash;
 
     public AudioSource sound;
 
+    public GameObject bullet;
 
-    private void Awake(){
+    public float muzzleVelocity;
+
+    private void Awake()
+    {
         shotsRemaining = magazineCapacity;
         triggerSet = true;
     }
+
     private void WeaponInputs()
     {
         shooting =
-            isFullAuto
+            fullAuto
                 ? Input.GetKey(KeyCode.Mouse0)
                 : Input.GetKeyDown(KeyCode.Mouse0);
 
         if (
             Input.GetKeyDown(KeyCode.R) &&
             shotsRemaining < magazineCapacity &&
-            !reloading || shotsRemaining == 0
+            !reloading ||
+            shotsRemaining == 0
         )
         {
             Reload();
@@ -82,35 +89,44 @@ public class FireWeapon : MonoBehaviour
 
     private void Shoot()
     {
-        // Instantiate(muzzleFlash, muzzle.position, muzzle.rotation);
         muzzleFlash.Play();
         sound.Play();
 
         shotsRemaining--;
         triggerSet = false;
 
+        Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+
+        Vector3 targetPoint;
+        if (Physics.Raycast(ray, out rayHit, ~layerMask))
+        {
+            // Instantiate(projectileImpactGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal));
+            Debug.Log(rayHit.collider.name);
+            targetPoint = rayHit.point;
+            // if (rayHit.collider.CompareTag("Enemy"))
+            // {
+            // rayHit.collider.GetComponent<EnemyAI>().TakeDamage(damage);
+            // }
+        }
+        else
+        {
+            targetPoint = ray.GetPoint(75);
+        }
+
+        Vector3 targetDisplacement = targetPoint - muzzle.position;
+
         float y = Random.Range(-projectileSpread, projectileSpread);
         float z = Random.Range(-projectileSpread, projectileSpread);
 
-        Vector3 direction = fpsCam.transform.forward + new Vector3(0, y, z);
+        Vector3 direction = targetDisplacement + new Vector3(0, y, z);
 
-        if (
-            Physics
-                .Raycast(fpsCam.transform.position,
-                direction,
-                out rayHit,
-                range,
-                whatIsEnemy)
-        )
-        {
-            Instantiate(projectileImpactGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal));
-            Debug.Log(rayHit.collider.name);
+        GameObject newBullet = Instantiate(bullet, muzzle.position, Quaternion.identity);
 
-            // if (rayHit.collider.CompareTag("Enemy"))
-            // {
-                // rayHit.collider.GetComponent<EnemyAI>().TakeDamage(damage);
-            // }
-        }
+        newBullet.transform.forward = direction.normalized;
+
+        newBullet.GetComponent<Rigidbody>().AddForce(direction * muzzleVelocity, ForceMode.Impulse);
+
+        // newBullet.
 
         Invoke("TriggerReset", 60f / rateOfFire);
     }
