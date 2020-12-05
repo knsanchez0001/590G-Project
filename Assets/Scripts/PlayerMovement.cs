@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float playerSpeed = 10f;
-    private float playerJumpHeight = 4f;
+    public float controllerHeight;
+    public float controllerCrouchingHeight;
+    public float playerSpeed = 10f;
+    public float playerJumpHeight = 4f;
     private float gravitationalForce = -20f;
     private CharacterController controller;
 
@@ -32,13 +34,13 @@ public class PlayerMovement : MonoBehaviour
                 graviationalVelocity.y += Mathf.Sqrt(playerJumpHeight * -2f * gravitationalForce);
             }
 
-            if(Input.GetKey(KeyCode.LeftShift) || controller.height == 2 && Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out RaycastHit hit, 2.5f)){
+            if(Input.GetKey(KeyCode.LeftShift) || controller.height == controllerCrouchingHeight && Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out RaycastHit hit, 2.5f)){
                 playerVelocity = movementInput * playerSpeed * 0.5f;
-                controller.height = 2f;
+                controller.height = controllerCrouchingHeight;
             }
             else{
                 playerVelocity = movementInput * playerSpeed;
-                controller.height = 3.8f;
+                controller.height = controllerHeight;
             }
             
         }
