@@ -11,6 +11,8 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask groundMask, playerMask;
 
+    Animator animator;
+
     // Patrolling
     public Vector3 walkpoint;
     bool walkpointSet;
@@ -27,6 +29,8 @@ public class EnemyAI : MonoBehaviour
     private void Awake(){
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+
     }
 
     // Start is called before the first frame update
@@ -43,14 +47,20 @@ public class EnemyAI : MonoBehaviour
 
         if(!playerInSightRange && !playerInAttackRange){
             Patrol();
+            animator.SetInteger("State", 0);
+            agent.speed = 4;
         }
 
         if(playerInSightRange && !playerInAttackRange){
             Chase();
+            animator.SetInteger("State", 1);
+            agent.speed = 8;
         }
 
         if(playerInSightRange && playerInAttackRange){
             Attack();
+            animator.SetInteger("State", 2);
+            agent.speed = 4;
         }
     }
 
