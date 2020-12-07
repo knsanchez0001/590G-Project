@@ -8,8 +8,11 @@ public class WeaponContainer : MonoBehaviour
     public GameObject primaryWeapon;
     public GameObject secondaryWeapon;
 
+    public GameObject crosshair;
+
     // Which weapon is equipped
     private bool isPrimaryEquipped;
+
     private bool switching;
 
     // Start is called before the first frame update
@@ -17,6 +20,7 @@ public class WeaponContainer : MonoBehaviour
     {
         primaryWeapon.SetActive(true);
         secondaryWeapon.SetActive(false);
+        crosshair.SetActive(true);
         isPrimaryEquipped = true;
         switching = false;
     }
@@ -24,6 +28,7 @@ public class WeaponContainer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        showCrosshair();
 
         if (Input.GetKeyDown(KeyCode.Tab) && !switching)
         {
@@ -58,6 +63,20 @@ public class WeaponContainer : MonoBehaviour
             primaryWeapon.SetActive(true);
             isPrimaryEquipped = true;
             switching = false;
+        }
+    }
+
+    private void showCrosshair() {
+        bool reloading1 = primaryWeapon.GetComponent<Weapon>().reloading;
+        bool reloading2 = secondaryWeapon.GetComponent<Weapon>().reloading;
+
+        if (reloading1 || reloading2 || switching)
+        {
+            crosshair.SetActive(false);
+        }
+        else
+        {
+            crosshair.SetActive(true);
         }
     }
 }
