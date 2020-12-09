@@ -14,21 +14,28 @@ public class PlayerMovement : MonoBehaviour
     Vector3 playerVelocity;
     Vector3 graviationalVelocity;
 
+    GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GetComponent<Health>().health <= 0){
+            gameManager.EndGame();
+        }
+
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         Vector3 movementInput = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
 
         if(Input.GetKeyDown(KeyCode.P)){
-            FindObjectOfType<GameManager>().PauseGame();
+            gameManager.PauseGame();
         }
 
         if (controller.isGrounded)
