@@ -21,8 +21,11 @@ public class Projectile : MonoBehaviour
         {
             other = other.transform.parent.gameObject;
         }
+        
+        
+        if(other.layer == 12 || other.layer == 8){
+            Debug.Log(other.GetComponent<Health>().health);
 
-        if(other.layer == 12){
             other.GetComponent<Health>().DamageHealth(damage);
         }
         else {

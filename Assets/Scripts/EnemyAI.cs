@@ -103,7 +103,7 @@ public class EnemyAI : MonoBehaviour
             agent.speed = 0;
             animator.SetInteger("State", 4);
         }
-        
+
         if(animator.GetCurrentAnimatorStateInfo(0).IsName("Base.dead")){
             if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= .99){
                 Destroy(transform.gameObject);
@@ -143,12 +143,15 @@ public class EnemyAI : MonoBehaviour
         // Make attack TODO
         if (!hasAttacked)
         {
-            Transform muzzle = transform;
+
+
             Rigidbody rb =
                 Instantiate(projectile,
                 transform.position + new Vector3(0f, 1f, 0f),
                 Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(muzzle.forward * 32f, ForceMode.Impulse);
+            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+
+
 
             hasAttacked = true;
             Invoke("ResetAttack", attackResetTime);
