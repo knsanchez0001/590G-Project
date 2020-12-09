@@ -24,8 +24,6 @@ public class Projectile : MonoBehaviour
         
         
         if(other.layer == 12 || other.layer == 8){
-            Debug.Log(other.GetComponent<Health>().health);
-
             other.GetComponent<Health>().DamageHealth(damage);
         }
         else {

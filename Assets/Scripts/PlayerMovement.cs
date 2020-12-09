@@ -27,6 +27,10 @@ public class PlayerMovement : MonoBehaviour
         float z = Input.GetAxis("Vertical");
         Vector3 movementInput = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
 
+        if(Input.GetKeyDown(KeyCode.P)){
+            FindObjectOfType<GameManager>().PauseGame();
+        }
+
         if (controller.isGrounded)
         {
             graviationalVelocity.y = gravitationalForce * Time.deltaTime;
