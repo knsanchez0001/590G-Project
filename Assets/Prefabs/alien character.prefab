@@ -2491,9 +2491,10 @@ GameObject:
   - component: {fileID: 2070339944884514966}
   - component: {fileID: 2070339944884514965}
   - component: {fileID: 2070339944884514964}
+  - component: {fileID: -4493980048153557274}
   m_Layer: 12
   m_Name: alien character
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2586,6 +2587,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-4493980048153557274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070339944884514963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 553bb2b0c7ae2f449b95243c2c05f13e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  animator: {fileID: 0}
+  agent: {fileID: 0}
 --- !u!1 &2070339944887866239
 GameObject:
   m_ObjectHideFlags: 0

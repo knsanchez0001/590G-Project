@@ -6,14 +6,30 @@ public class Projectile : MonoBehaviour
 {
     public GameObject projectileImpactGraphic;
 
+    public LayerMask enemyMask;
+
     public int damage = 10;
 
     private void OnCollisionEnter(Collision collision){
         ContactPoint contact = collision.contacts[0];
         Quaternion rot = Quaternion.LookRotation(contact.normal);
         Vector3 pos = contact.point;
-        Instantiate(projectileImpactGraphic, pos, rot);
-        // Instantiate(projectileImpactGraphic, transform.position, Quaternion.identity);
+        
+        GameObject other = collision.gameObject;
+
+        while(other.transform.parent != null)
+        {
+            other = other.transform.parent.gameObject;
+        }
+
+        if(other.layer == 12){
+            other.GetComponent<Health>().DamageHealth(damage);
+        }
+        else {
+            Instantiate(projectileImpactGraphic, pos, rot);
+        }
+
+
         Destroy(transform.gameObject);
     }
 

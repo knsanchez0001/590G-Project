@@ -37,7 +37,8 @@ public class EnemyAI : MonoBehaviour
     public bool
 
             playerInSightRange,
-            playerInAttackRange;
+            playerInAttackRange,
+            isAlive;
 
     public GameObject projectile;
 
@@ -46,6 +47,12 @@ public class EnemyAI : MonoBehaviour
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        isAlive = true;
+
+        foreach (Transform t in transform)
+        {
+            t.gameObject.tag = transform.gameObject.tag;
+        }
     }
 
     // Start is called before the first frame update
@@ -61,30 +68,46 @@ public class EnemyAI : MonoBehaviour
         playerInAttackRange =
             Physics.CheckSphere(transform.position, attackRange, playerMask);
 
-        if (!playerInSightRange && !playerInAttackRange)
+        isAlive = GetComponent<Health>().health > 0;
+
+        if (isAlive)
         {
-            Patrol();
-            animator.SetInteger("State", 0);
-            agent.speed = 4;
+            if (!playerInSightRange && !playerInAttackRange)
+            {
+                Patrol();
+                animator.SetInteger("State", 0);
+                agent.speed = 4;
+            }
+
+            if (playerInSightRange && !playerInAttackRange)
+            {
+                Vector3 targetDir = player.position - transform.position;
+                float angle = Vector3.Angle(targetDir, transform.forward);
+
+                // Debug.Log(angle);
+                // if (angle < 50f) Debug.Log("In Field of View");
+                Chase();
+                animator.SetInteger("State", 1);
+                agent.speed = 8;
+            }
+
+            if (playerInSightRange && playerInAttackRange)
+            {
+                Attack();
+                animator.SetInteger("State", 2);
+                agent.speed = 4;
+            }
         }
-
-        if (playerInSightRange && !playerInAttackRange)
+        else
         {
-            Vector3 targetDir = player.position - transform.position;
-            float angle = Vector3.Angle(targetDir, transform.forward);
-            // Debug.Log(angle);
-            // if (angle < 50f) Debug.Log("In Field of View");
-
-            Chase();
-            animator.SetInteger("State", 1);
-            agent.speed = 8;
+            agent.speed = 0;
+            animator.SetInteger("State", 4);
         }
-
-        if (playerInSightRange && playerInAttackRange)
-        {
-            Attack();
-            animator.SetInteger("State", 2);
-            agent.speed = 4;
+        
+        if(animator.GetCurrentAnimatorStateInfo(0).IsName("Base.dead")){
+            if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= .99){
+                Destroy(transform.gameObject);
+            }
         }
     }
 
@@ -115,14 +138,16 @@ public class EnemyAI : MonoBehaviour
     private void Attack()
     {
         agent.SetDestination(transform.position);
-        transform.LookAt(player);
+        transform.LookAt (player);
 
         // Make attack TODO
         if (!hasAttacked)
-        {   
+        {
             Transform muzzle = transform;
-            // muzzle.position += new Vector3(0f,1f,0f);
-            Rigidbody rb = Instantiate(projectile, transform.position + new Vector3(0f,1f,0f), Quaternion.identity).GetComponent<Rigidbody>();
+            Rigidbody rb =
+                Instantiate(projectile,
+                transform.position + new Vector3(0f, 1f, 0f),
+                Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(muzzle.forward * 32f, ForceMode.Impulse);
 
             hasAttacked = true;
@@ -151,5 +176,4 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    // TODO Health stats;
 }
