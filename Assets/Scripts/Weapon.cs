@@ -106,12 +106,10 @@ public class Weapon : MonoBehaviour
         clone.transform.forward = direction;
         clone.GetComponent<Rigidbody>().AddForce(direction * muzzleVelocity + new Vector3(x, y, 0), ForceMode.Impulse);
         clone.GetComponent<Projectile>().damage = damage;
-        clone.GetComponent<Projectile>().parentWeapon = transform.gameObject;
 
         
 
         shotsRemaining--;
-        Debug.Log (shotsRemaining);
 
         if(allowInvoke){
             Invoke("TriggerReset", 60f / rateOfFire);

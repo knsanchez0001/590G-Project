@@ -6,8 +6,7 @@ public class Projectile : MonoBehaviour
 {
     public GameObject projectileImpactGraphic;
 
-    public int damage;
-    public GameObject parentWeapon;
+    public int damage = 10;
 
     private void OnCollisionEnter(Collision collision){
         ContactPoint contact = collision.contacts[0];
