@@ -608,10 +608,12 @@ MonoBehaviour:
   projectileSpread: 5
   reloadTime: 2
   magazineCapacity: 30
+  totalCapacity: 90
   damage: 10
   range: 100
   fullAuto: 1
   shotsRemaining: 0
+  totalShotsRemaining: 0
   triggerPulled: 1
   triggerSet: 0
   reloading: 0
