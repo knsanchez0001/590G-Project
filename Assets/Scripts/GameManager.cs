@@ -14,12 +14,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void StartGame(){
+        Debug.Log("STARTGAME");
+        SceneManager.LoadScene(1);
+    }
+
     public void PauseGame(){
         Debug.Log("PAUSEGAME");
     }
 
     void RestartGame(){
-        Debug.Log("RESTARTGAME");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
