@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5452639150437866965}
   - component: {fileID: 7276225586324955441}
   m_Layer: 0
-  m_Name: First_Aid_Kit
+  m_Name: First Aid Kit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5146140731938393050}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.1, z: 0.3}

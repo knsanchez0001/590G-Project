@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 2653893836544992357}
   m_Layer: 8
   m_Name: Pistol
-  m_TagString: Untagged
+  m_TagString: Pistol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -261,6 +261,7 @@ MonoBehaviour:
   sound: {fileID: 2653893836544992357}
   shootSound: {fileID: 8300000, guid: 2203773368e4340d98c114f55c2dd7fd, type: 3}
   reloadSound: {fileID: 8300000, guid: e5198250a6a57408bb36e14bc4a322c4, type: 3}
+  text: {fileID: 0}
 --- !u!82 &2653893836544992357
 AudioSource:
   m_ObjectHideFlags: 0

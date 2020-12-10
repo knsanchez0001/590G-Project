@@ -11,6 +11,8 @@ TagManager:
   - Dummie
   - FxTemporaire
   - Enemy
+  - Pistol
+  - Rifle
   layers:
   - Default
   - TransparentFX
