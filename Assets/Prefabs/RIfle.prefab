@@ -5107,7 +5107,7 @@ MonoBehaviour:
   rateOfFire: 700
   projectileSpread: 35
   reloadTime: 2.5
-  magazineCapacity: 30
+  magazineCapacity: 60
   totalCapacity: 600
   damage: 12
   range: 100
