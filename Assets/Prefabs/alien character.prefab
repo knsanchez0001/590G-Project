@@ -527,7 +527,7 @@ MonoBehaviour:
   hasAttacked: 0
   sound: {fileID: 3833063767811709772}
   clip: {fileID: 8300000, guid: 396e43ef5c1c49b47b2db339a39c8f49, type: 3}
-  sightRange: 30
+  sightRange: 25
   attackRange: 15
   playerInSightRange: 0
   playerInAttackRange: 0
