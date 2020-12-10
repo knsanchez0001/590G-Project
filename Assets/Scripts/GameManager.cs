@@ -11,9 +11,8 @@ public class GameManager : MonoBehaviour
     bool endGameCalled = false;
 
     void Awake(){
-        GameUI.SetActive(true);
-        PauseUI.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
+        
+        
     }
 
     public void EndGame(){
@@ -27,6 +26,9 @@ public class GameManager : MonoBehaviour
     public void StartGame(){
         Debug.Log("STARTGAME");
         SceneManager.LoadScene(1);
+        GameUI.SetActive(true);
+        PauseUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void PauseGame(){
