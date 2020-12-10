@@ -5105,11 +5105,11 @@ MonoBehaviour:
   projectile: {fileID: 8988404100504643877, guid: d253ea0e817313a4596eeaa17215791b, type: 3}
   muzzleVelocity: 900
   rateOfFire: 700
-  projectileSpread: 5
-  reloadTime: 2
+  projectileSpread: 35
+  reloadTime: 2.5
   magazineCapacity: 30
-  totalCapacity: 90
-  damage: 10
+  totalCapacity: 600
+  damage: 12
   range: 100
   fullAuto: 1
   shotsRemaining: 0
@@ -5122,8 +5122,8 @@ MonoBehaviour:
   allowInvoke: 1
   muzzleFlash: {fileID: 4920280829991892496}
   sound: {fileID: 4920280830110728593}
-  shootSound: {fileID: 8300000, guid: 2203773368e4340d98c114f55c2dd7fd, type: 3}
-  reloadSound: {fileID: 8300000, guid: e5198250a6a57408bb36e14bc4a322c4, type: 3}
+  shootSound: {fileID: 8300000, guid: ecca49d680d171b488214753eb4a9d23, type: 3}
+  reloadSound: {fileID: 8300000, guid: aaaa486c0c725bc4e96e44ce7577498b, type: 3}
   text: {fileID: 0}
 --- !u!1 &4921644528842970456
 GameObject:

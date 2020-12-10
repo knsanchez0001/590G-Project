@@ -244,9 +244,9 @@ MonoBehaviour:
   rateOfFire: 800
   projectileSpread: 5
   reloadTime: 1.5
-  magazineCapacity: 8
-  totalCapacity: 48
-  damage: 10
+  magazineCapacity: 12
+  totalCapacity: 120
+  damage: 25
   range: 100
   fullAuto: 0
   shotsRemaining: 0
@@ -259,8 +259,8 @@ MonoBehaviour:
   allowInvoke: 1
   muzzleFlash: {fileID: 2653893836938036642}
   sound: {fileID: 2653893836544992357}
-  shootSound: {fileID: 8300000, guid: 2203773368e4340d98c114f55c2dd7fd, type: 3}
-  reloadSound: {fileID: 8300000, guid: e5198250a6a57408bb36e14bc4a322c4, type: 3}
+  shootSound: {fileID: 8300000, guid: afb8cc3a084097844832b64440606aff, type: 3}
+  reloadSound: {fileID: 8300000, guid: 5cc9b6aa92fcdcf41afa58c8fcae1c92, type: 3}
   text: {fileID: 0}
 --- !u!82 &2653893836544992357
 AudioSource:

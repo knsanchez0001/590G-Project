@@ -98,7 +98,7 @@ public class Weapon : MonoBehaviour
     {
         reloading = true;
         sound.clip = reloadSound;
-        sound.Play();
+        sound.PlayOneShot(reloadSound);
         Invoke("Reloaded", reloadTime);
     }
 
@@ -114,7 +114,7 @@ public class Weapon : MonoBehaviour
     private void Shoot()
     {
         muzzleFlash.Play();
-        sound.Play();
+        sound.PlayOneShot(shootSound);
 
         triggerSet = false;
 

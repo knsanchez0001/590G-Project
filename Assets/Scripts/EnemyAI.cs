@@ -30,6 +30,8 @@ public class EnemyAI : MonoBehaviour
 
     public AudioSource sound;
 
+    public AudioClip clip;
+
     // States
     public float
 
@@ -151,7 +153,7 @@ public class EnemyAI : MonoBehaviour
                 Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
 
-            sound.Play();
+            sound.PlayOneShot(clip);
             hasAttacked = true;
             Invoke("ResetAttack", attackResetTime);
         }
