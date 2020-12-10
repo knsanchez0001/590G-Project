@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 public class Health : MonoBehaviour
 {
+    public int maxHealth;
     public int health;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Awake(){
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -19,6 +19,6 @@ public class Health : MonoBehaviour
     }
 
     public void DamageHealth(int damage){
-        health -= damage;
+        health = Mathf.Max(health - damage, 0);
     }
 }

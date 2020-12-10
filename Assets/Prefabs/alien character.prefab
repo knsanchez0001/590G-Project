@@ -2564,6 +2564,7 @@ MonoBehaviour:
   attackRange: 15
   playerInSightRange: 0
   playerInAttackRange: 0
+  isAlive: 0
   projectile: {fileID: 0}
 --- !u!195 &2070339944884514964
 NavMeshAgent:
@@ -2599,9 +2600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 553bb2b0c7ae2f449b95243c2c05f13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  animator: {fileID: 0}
-  agent: {fileID: 0}
+  maxHealth: 100
+  health: 0
 --- !u!1 &2070339944887866239
 GameObject:
   m_ObjectHideFlags: 0

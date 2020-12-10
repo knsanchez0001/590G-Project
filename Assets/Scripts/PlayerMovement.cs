@@ -15,18 +15,24 @@ public class PlayerMovement : MonoBehaviour
     Vector3 graviationalVelocity;
 
     GameManager gameManager;
+    Health health;
+    HealthBar healthBar;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        health = GetComponent<Health>();
         gameManager = FindObjectOfType<GameManager>();
+        healthBar = FindObjectOfType<HealthBar>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<Health>().health <= 0){
+        healthBar.SetMaskFill((float)health.health / (float)health.maxHealth);
+
+        if (health.health <= 0){
             gameManager.EndGame();
         }
 
@@ -57,6 +63,9 @@ public class PlayerMovement : MonoBehaviour
         }
         else {
             graviationalVelocity.y += gravitationalForce * Time.deltaTime;
+            if(graviationalVelocity.y < -100f){
+                health.DamageHealth(health.maxHealth);
+            }
         }
         controller.Move((playerVelocity + graviationalVelocity) * Time.deltaTime);
     }
