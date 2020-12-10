@@ -28,6 +28,8 @@ public class EnemyAI : MonoBehaviour
 
     public bool hasAttacked;
 
+    public AudioSource sound;
+
     // States
     public float
 
@@ -143,16 +145,13 @@ public class EnemyAI : MonoBehaviour
         // Make attack TODO
         if (!hasAttacked)
         {
-
-
             Rigidbody rb =
                 Instantiate(projectile,
                 transform.position + new Vector3(0f, 1f, 0f),
                 Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
 
-
-
+            sound.Play();
             hasAttacked = true;
             Invoke("ResetAttack", attackResetTime);
         }

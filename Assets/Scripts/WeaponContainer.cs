@@ -9,6 +9,7 @@ public class WeaponContainer : MonoBehaviour
     public GameObject secondaryWeapon;
 
     public GameObject crosshair;
+    public AudioSource sound;
 
     // Which weapon is equipped
     private bool isPrimaryEquipped;
@@ -52,6 +53,7 @@ public class WeaponContainer : MonoBehaviour
 
     private void switchWeapon()
     {
+        sound.Play();
         if (isPrimaryEquipped)
         {
             secondaryWeapon.SetActive(true);

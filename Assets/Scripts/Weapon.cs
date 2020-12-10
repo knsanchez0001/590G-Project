@@ -97,12 +97,15 @@ public class Weapon : MonoBehaviour
     private void Reload()
     {
         reloading = true;
+        sound.clip = reloadSound;
+        sound.Play();
         Invoke("Reloaded", reloadTime);
     }
 
     private void Reloaded()
     {
         reloading = false;
+        sound.clip = shootSound;
         int temp = shotsRemaining;
         shotsRemaining = shotsRemaining + Mathf.Min(magazineCapacity - shotsRemaining, totalShotsRemaining);
         totalShotsRemaining = Mathf.Max(totalShotsRemaining - magazineCapacity + temp, 0);
