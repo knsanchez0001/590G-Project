@@ -5,7 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static bool paused = false;
+    public GameObject GameUI;
+    public GameObject PauseUI;
     bool endGameCalled = false;
+
+    void Awake(){
+        GameUI.SetActive(true);
+        PauseUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     public void EndGame(){
         if(!endGameCalled){
             endGameCalled = true;
@@ -20,7 +30,22 @@ public class GameManager : MonoBehaviour
     }
 
     public void PauseGame(){
-        Debug.Log("PAUSEGAME");
+        if(!paused){
+            paused = true;
+            Debug.Log("PAUSEGAME");
+            GameUI.SetActive(false);
+            PauseUI.SetActive(true);
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+        }else {
+            paused = false;
+            Debug.Log("RESUMEGAME");
+            GameUI.SetActive(true);
+            PauseUI.SetActive(false);
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        
     }
 
     void RestartGame(){
