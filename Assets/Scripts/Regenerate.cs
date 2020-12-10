@@ -31,24 +31,6 @@ public class Regenerate : MonoBehaviour
                     Destroy (gameObject);
                 }
             }
-
-            // else
-            // {
-            //     Weapon w;
-            //     if(type == 1)
-            //     {
-            //         w = GameObject.FindWithTag("Pistol").GetComponent<Weapon>();
-            //     }
-            //     else if (type == 2)
-            //     {
-            //         w = GameObject.FindWithTag("Rifle").GetComponent<Weapon>();
-            //     }
-            //     if(w.totalShotsRemaining < w.totalCapacity)
-            //     {
-            //         w.totalShotsRemaining = w.totalCapacity;
-            //         Destroy (gameObject);
-            //     }
-            // }
             if (type == 1)
             {
                 GameObject pistol = GameObject.FindWithTag("Pistol");
