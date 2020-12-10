@@ -21,4 +21,8 @@ public class Health : MonoBehaviour
     public void DamageHealth(int damage){
         health = Mathf.Max(health - damage, 0);
     }
+
+    public void Heal(){
+        health = maxHealth;
+    }
 }
