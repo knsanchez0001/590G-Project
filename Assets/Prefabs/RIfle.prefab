@@ -5105,11 +5105,11 @@ MonoBehaviour:
   projectile: {fileID: 8988404100504643877, guid: d253ea0e817313a4596eeaa17215791b, type: 3}
   muzzleVelocity: 900
   rateOfFire: 700
-  projectileSpread: 35
+  projectileSpread: 30
   reloadTime: 2.5
   magazineCapacity: 60
   totalCapacity: 600
-  damage: 12
+  damage: 15
   range: 100
   fullAuto: 1
   shotsRemaining: 0
