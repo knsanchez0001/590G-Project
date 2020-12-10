@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         healthBar.SetMaskFill((float)health.health / (float)health.maxHealth);
 
         if (health.health <= 0){
-            gameManager.EndGame();
+            gameManager.RestartGame();
         }
 
         float x = Input.GetAxis("Horizontal");

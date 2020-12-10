@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     public static bool paused = false;
     public GameObject GameUI;
     public GameObject PauseUI;
-    bool endGameCalled = false;
 
     void Awake(){
         
@@ -16,11 +15,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void EndGame(){
-        if(!endGameCalled){
-            endGameCalled = true;
-            Debug.Log("ENDGAME");
-            RestartGame();
-        }
+        SceneManager.LoadScene(2);
+        GameUI.SetActive(false);
+        PauseUI.SetActive(false);
     }
 
     public void StartGame(){
@@ -50,7 +47,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    void RestartGame(){
+    public void RestartGame(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
